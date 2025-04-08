@@ -1,0 +1,140 @@
+@use "sass:color";
+
+
+$primary-color: #0d6efd;
+$secondary-color: #6c757d;
+$light-color: #f8f9fa;
+$dark-color: #212529;
+
+@mixin card-shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: $dark-color;
+}
+
+.navbar {
+    .navbar-toggler {
+        @media (min-width: 992px) {
+            display: none;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .navbar-collapse {
+            display: flex !important;
+            flex-basis: auto;
+        }
+    }
+
+    @media (max-width: 991.98px) {
+        .navbar-nav {
+            padding-top: 1rem;
+        }
+        
+        .social-icons {
+            padding: 1rem 0;
+            justify-content: center;
+        }
+    }
+
+}
+
+
+
+.categories {
+    .btn-outline-primary {
+        border-radius: 20px;
+        padding: 0.375rem 1.25rem;
+    }
+}
+
+.card {
+    @include card-shadow;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+
+    background-color: color.adjust($secondary-color, $lightness: 50%);
+    
+    .card-img-top {
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-title {
+        color: $primary-color;
+        font-weight: 600;
+    }
+
+    .card-subtitle {
+        font-size: 0.9rem;
+    }
+
+    ul {
+        padding-left: 0;
+        margin-top: 1rem;
+
+        li {
+            padding: 0.3rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+.newsletter {
+    background-color: $primary-color;
+    
+    .btn-light {
+        color: $primary-color;
+        font-weight: 500;
+    }
+    
+    .form-control {
+        border: none;
+    }
+}
+
+footer {
+    a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: color.scale($primary-color, $lightness: 70%);
+        }
+    }
+    
+    .social-icons {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .categories {
+        .btn {
+            margin-bottom: 0.5rem;
+        }
+    }
+}
